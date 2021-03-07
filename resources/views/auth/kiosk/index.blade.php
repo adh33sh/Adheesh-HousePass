@@ -14,11 +14,12 @@
             </tr>
         </thead>
         <tbody>
-            @foreach($applications as $application)
+            @foreach($applications as $x => $application)
+            @if($application->kioskAccepted != 'Accepted')
 
             <tr>
 
-                <td></td>
+                <td>{{$x+1}}</td>
                 <td><a href="/application/{{ $application->Application_number }}">{{ $application->Application_number }}</a></td>
                 <td>{{ $application->Application_name }}</td>
                 <td>{{ $application->created_at }}</td>
@@ -26,13 +27,14 @@
 
             </tr>
 
-
+            @endif
             @endforeach
         </tbody>
 
 
 
     </table>
+
 </div>
 
 @endsection

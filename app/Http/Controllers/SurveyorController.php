@@ -13,10 +13,10 @@ class SurveyorController extends Controller
 {
     public function index()
     {
-        $surveys = Survey::all();
+        $surveyors = Application::all();
 
         return view('auth.surveyor.index', [
-            'surveys' => $surveys,
+            'surveyors' => $surveyors,
         ]);
     }
     public function form($id)
@@ -29,40 +29,50 @@ class SurveyorController extends Controller
             'settlements' => $settlements
         ]);
     }
-    public function verified()
-    {
-        $surveyor = new Surveyor();
 
-        $surveyor->Application_no = request('ApplicationNumber');
-        $surveyor->Verified = request('Verified');
-
-        $surveyor->save();
-
-        return redirect(route('surveyor.send'));
-    }
     public function send()
     {
-        $surveyors = Surveyor::all();
-        $surveys = Survey::all();
+        $surveyors = Application::all();
 
         return view('auth.surveyor.send', [
             'surveyors' => $surveyors,
-            'surveys' => $surveys,
         ]);
     }
     public function notesheet($id)
     {
-        $applications = Application::where('Application_number', $id)->first();
-        $settlements = Settlement::where('Application_no', $id)->first();
-        $surveyor = Surveyor::where('Application_no', $id)->first();
+        $application = Application::where('Application_number', $id)->first();
+
 
         $pdf = App::make('dompdf.wrapper');
         $pdf->loadView('auth.surveyor.notesheet', [
-            'applications' => $applications,
-            'settlements' => $settlements,
-            'surveyor' => $surveyor,
+            'application' => $application,
+
 
         ]);
         return  $pdf->stream();
+    }
+    public function verified($id)
+    {
+        $surveyor = Application::where('Application_number', $id)->first();
+        $surveyor->surveyorVerified = 'Verified';
+        $surveyor->save();
+
+        return redirect(route('surveyor.send'));
+    }
+    public function surveyorForwarded($id)
+    {
+        $application = Application::where('Application_number', $id)->first();
+        $application->surveyorForwarded = 'Yes';
+        $application->save();
+
+        return redirect()->back();
+    }
+    public function delete($Application_no)
+    {
+
+        $surveyor = Surveyor::where('Application_no', $Application_no)->first();
+        $surveyor->delete();
+
+        return redirect()->back();
     }
 }

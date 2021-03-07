@@ -298,37 +298,44 @@
 
 </table>
 <div>
-    <form action="/kiosk/dashboard" method="POST">
+    @foreach($applications as $application)
+    @if($application->kioskAccepted != 'Accepted')
+    <form action="/kiosk/{{ $application->Application_number }}/appStatus" id="formID" method="POST">
         @csrf
-        @foreach($applications as $application)
-        <div class="col-4">
+        @method('PATCH')
+
+        <!-- <div class="col-4">
             <label for="ApplicationNumber" class="form-label">Application Number</label>
             <input type="number" required value="{{ $application->Application_number }}" class="form-control hover:bg-green-100 transition ease-out duration-500" id="ApplicationNumber" name="ApplicationNumber" readonly>
-        </div>
+        </div> -->
 
 
-        <div class="col-12 mt-5 mb-5">
-            <button type="submit" class="btn btn-primary w-full">Submit</button>
-        </div>
         <div class="mb-4">
             <input type="submit" class="btn btn-success" value="Accept">
         </div>
 
+    </form>
+    @else
+    <button class="btn btn-secondary  disabled mb-4">Accepted</button>
+    @endif
 </div>
-</form>
+
+@if($application->kioskAccepted != 'Accepted')
+
 
 <nav class="flex justify-items-start mb-4">
-
     <form action="/kiosk/reject/{{ $application->Application_number }}" method="POST">
         @csrf
         @method('DELETE')
         <input type="submit" class="btn btn-danger" value="Reject">
     </form>
-    @endforeach
 </nav>
+@endif
+@endforeach
 <div class="mb-4">
-    <a href="/kiosk/send" class="btn btn-secondary">Check All Accepted Forms</a>
+    <a href="/kiosk/send" class="btn btn-primary">Check All Accepted Forms</a>
 </div>
+
 
 @endsection
 <!-- </body>

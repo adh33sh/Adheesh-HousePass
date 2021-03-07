@@ -5,7 +5,11 @@ namespace App\Http\Controllers;
 use App\Models\Application;
 use App\Models\Kiosk;
 use App\Models\Settlement;
+use App\Models\Survey;
+use App\Models\Surveyor;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\Mail;
 
 class SettlementController extends Controller
 {
@@ -13,7 +17,7 @@ class SettlementController extends Controller
 
     public function index()
     {
-        $kiosks = Kiosk::all();
+        $kiosks = Application::all();
         return view('auth.settlement.index', [
             'kiosks' => $kiosks
         ]);
@@ -47,7 +51,7 @@ class SettlementController extends Controller
     }
     public function send()
     {
-        $settlements = Settlement::all();
+        $settlements = Application::all();
 
         return view('auth.settlement.send', [
             'settlements' => $settlements,
@@ -67,16 +71,143 @@ class SettlementController extends Controller
             'kiosks' => $kiosks
         ]);
     }
-    public function accept()
+    public function accept($id)
     {
-        $settlements = new Settlement();
-        $settlements->Application_no = request('ApplicationNumber');
+        $settlements = Application::where('Application_number', $id)->first();
         $settlements->DDFD = request('DDFD');
         $settlements->Target_date = request('TargetDate');
-        $settlements->Remarks = request('Remarks');
+        $settlements->settlementAccepted = 'Accepted';
 
         $settlements->save();
 
         return redirect(route('settlement.send'));
+    }
+    public function settlementForwarded($id)
+    {
+        $application = Application::where('Application_number', $id)->first();
+        $application->settlementForwarded = 'Yes';
+        $application->save();
+
+        return redirect()->back();
+    }
+    public function check()
+    {
+        $settlements = Application::all();
+
+        return view('auth.settlement.check', [
+            'settlements' => $settlements,
+        ]);
+    }
+    // public function approve($id)
+    // {
+    //     $settlement = Settlement::where('Application_no', $id)->first();
+    //     $settlement->Status = "Yes";
+    //     $settlement->save();
+    //     return redirect('/settlement/approved');
+    // }
+    // public function approved()
+    // {
+
+    //     $settlements = Settlement::all();
+
+    //     return view('auth.settlement.approved', [
+    //         'settlements' => $settlements,
+    //     ]);
+    // }
+
+    public function approved($id)
+    {
+        $application = Application::where('Application_number', $id)->first();
+        $application->settlementVerified = 'Verified';
+        $application->save();
+
+        return redirect(route('settlement.verified'));
+    }
+
+    public function verified()
+    {
+        $settlements = Application::all();
+        return view('auth.settlement.approved', compact('settlements'));
+    }
+    public function finalSend($id)
+    {
+        $application = Application::where('Application_number', $id)->first();
+        $application->settlementfinalSend = 'Done';
+        $application->save();
+
+        return redirect()->back()->with('alert', 'done');
+    }
+
+    public function reciept($id)
+    {
+        $application = Application::where('Application_number', $id)->first();
+
+        $pdf = App::make('dompdf.wrapper');
+        $pdf->loadView('auth.settlement.reciept', [
+            'application' => $application,
+        ]);
+        return  $pdf->stream();
+    }
+    public function final()
+    {
+        $settlements = Application::all();
+
+        return view('auth.settlement.final', compact('settlements'));
+    }
+    public function settlementSigned($id)
+    {
+        $application = Application::where('Application_number', $id)->first();
+        $application->settlementSigned = 'Signed';
+        $application->save();
+
+        return redirect(route('settlement.upload'));
+    }
+
+    public function settlementUploaded($id)
+    {
+        $application = Application::where('Application_number', $id)->first();
+        $application->settlementUploaded = 'Uploaded';
+        $application->save();
+
+        if ($application->Email) {
+            $data = Application::where('Application_number', $id)->first();
+            $applicantName = $data->Applicant_name;
+            $applicationNumber = $data->Application_number;
+            $recieverMail = $data->Email;
+            $msg = "Hi $applicantName, Your application for House Pass has been accepted! You can now go to the Kiosk Center and take your reciept. Your application number is $applicationNumber";
+            // $abs = $data->Email;
+            // $recieverMail = $abs;
+
+            $data = array("body" => $msg);
+
+            Mail::send('auth.settlement.email', $data, function ($message) use ($recieverMail, $applicantName) {
+                $message->to($recieverMail, $applicantName)
+                    ->subject("$applicantName way to go!");
+                $message->from("settlement@gmail.com", 'House Pass');
+                $message->replyTo("settlement@gmail.com");
+            });
+        }
+
+
+        return redirect()->back();
+    }
+    public function upload()
+    {
+        $settlements = Application::all();
+        return view('auth.settlement.upload', compact('settlements'));
+    }
+
+    public function notesheet($id)
+    {
+        $application = Application::where('Application_number', $id)->first();
+
+
+        $pdf = App::make('dompdf.wrapper');
+        $pdf->loadView('auth.settlement.notesheet', [
+            'application' => $application,
+
+
+        ]);
+        return  $pdf->stream();
     }
 }

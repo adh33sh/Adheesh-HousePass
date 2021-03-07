@@ -294,14 +294,11 @@
     </tr>
 
 </table>
+@foreach($applications as $application)
+@if($application->settlementAccepted != 'Accepted')
 <form action="/settlement/accept" method="POST">
     @csrf
-    @foreach($applications as $application)
-    <div class="col-4">
-        <label for="ApplicationNumber" class="form-label">Application Number</label>
-        <input type="number" required value="{{ $application->Application_number }}" class="form-control hover:bg-green-100 transition ease-out duration-500" id="ApplicationNumber" name="ApplicationNumber" readonly>
-    </div>
-    @endforeach
+
     <div class="col-md-6">
         <label for="DDFD" class="form-label">Due Date For Decision</label>
         <input type="date" required class="form-control hover:bg-green-100 transition ease-out duration-500" id="DDFD" name="DDFD">
@@ -310,17 +307,29 @@
         <label for="TargetDate" class="form-label">Target Date</label>
         <input type="date" required class="form-control hover:bg-green-100 transition ease-out duration-500" id="TargetDate" name="TargetDate">
     </div>
-    <div class="col-md-6">
-        <label for="Remarks" class="form-label">Remarks</label>
-        <input type="text" required class="form-control hover:bg-green-100 transition ease-out duration-500" id="Remarks" name="Remarks">
-    </div>
+
 
     <input type="submit" class="btn btn-success" value="Accept">
 
 </form>
+@else
+<button class="btn btn-secondary">Accepted</button>
+@endif
 
 
+@if($application->settlementAccepted != 'Accepted')
 
+
+<form action="/kiosk/reject/{{ $application->Application_number }}" method="POST">
+
+    @csrf
+    @method('DELETE')
+    <input type="submit" class="btn btn-danger" value="Reject">
+</form>
+
+@endif
+
+@endforeach
 
 <div class="mb-4">
     <a href="/settlement/send" class="btn btn-secondary">Check All Accepted Forms</a>

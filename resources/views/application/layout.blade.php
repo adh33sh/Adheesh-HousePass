@@ -52,12 +52,7 @@
                         <div class=" p-2 text-center ">
                             <div>
 
-                                <div>
-                                    <a href="/survey/send" class="btn btn-dark w-full block mb-1">Check My Accepted Notesheets</a>
-                                </div>
-                                <div>
-                                    <a href="/survey/verified" class="btn btn-secondary w-full block mb-1">Check Verified Notesheets By The Surveyor</a>
-                                </div>
+
                             </div>
                         </div>
                     </div>
@@ -67,13 +62,6 @@
                             <div class=" p-2 text-center mt-5 ">
 
 
-                                <div class="mb-3">
-                                    <form action="/logout" method="POST">
-                                        @csrf
-                                        <button type="submit" class="btn btn-danger">Logout</button>
-                                    </form>
-
-                                </div>
                             </div>
                         </nav>
 

@@ -117,9 +117,27 @@
 
                 </div>
                 <div class="">
-                    <div class="bg-gray-200 h-40 w-full">
+                    <div class="bg-gray-200 h-auto w-full">
                         <div class="bg-black text-white p-2">
-                            New & Events
+                            Details
+                        </div>
+                        <div class="p-4 bg-gray-200  rounded-2xl mb-5">
+                            <div class="bg-white h-40 w-full flex justify-center rounded-2xl shadow-2xl p-2 ">
+
+                                <form action="{{ url('/search/status') }}" type="GET">
+
+                                    <div class="py-2 flex justify-center">
+                                        <label for="inputApplicationNumber" class="form-label">Application Number</label>
+                                        <input type="number" required class="form-control hover:bg-green-100 transition ease-out duration-500" id="Application_number" name="Application_number">
+                                    </div>
+                                    <div class="col-12 flex justify-center">
+                                        <button type="submit" class="btn btn-primary">Search</button>
+                                    </div>
+
+                                </form>
+
+                            </div>
+
                         </div>
 
                     </div>

@@ -279,22 +279,6 @@
     </tr>
 </table>
 
-<form action="/survey/accept" method="POST">
-    @csrf
-    <div class="col-4">
-        <label for="ApplicationNumber" class="form-label">Application Number</label>
-        <input type="number" required value="{{ $settlements->Application_no }}" class="form-control hover:bg-green-100 transition ease-out duration-500" id="ApplicationNumber" name="ApplicationNumber" readonly>
-    </div>
-    <!-- <div class="col-md-6">
-        <label for="Comments" class="form-label">Comments</label>
-        <input type="text" required class="form-control hover:bg-green-100 transition ease-out duration-500" id="Comments" name="Comments">
-    </div> -->
-
-    <td><input type="submit" class="btn btn-success" value="Accept"></td>
-
-</form>
-
-
 <div class="mb-4">
     <a href="/survey/send" class="btn btn-secondary">Check All Accepted Forms</a>
 </div>

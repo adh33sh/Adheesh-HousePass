@@ -69,10 +69,31 @@ class CreateApplicationsTable extends Migration
             $table->string('attachments')->nullable();
 
 
-            $table->string('status')->nullable();
+
+            $table->string('kioskAccepted')->nullable();
+            $table->string('kioskForwarded')->nullable();
+
+
             $table->date('DDFD')->nullable();
             $table->date('Target_date')->nullable();
-            $table->string('Remarks')->nullable();
+            $table->string('settlementAccepted')->nullable();
+            $table->string('settlementForwarded')->nullable();
+            $table->string('settlementVerified')->nullable();
+            $table->string('settlementfinalSend')->nullable();
+            $table->string('settlementSigned')->nullable();
+            $table->string('settlementUploaded')->nullable();
+
+
+            $table->string('surveyAccepted')->nullable();
+            $table->string('surveyForwarded')->nullable();
+            $table->string('surveyComment')->nullable();
+
+
+            $table->string('surveyorVerified')->nullable();
+            $table->string('surveyorForwarded')->nullable();
+
+
+            $table->string('clerkSent')->nullable();
 
 
 

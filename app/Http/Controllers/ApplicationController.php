@@ -220,4 +220,17 @@ class ApplicationController extends Controller
     {
         return response()->download('storage/supportingDocs/' . $attachments);
     }
+    public function searchStatus()
+    {
+
+
+        $search = request()->query('Application_number');
+        if ($search) {
+            // dd(request()->query('Application_number'));
+            $application = Application::where('Application_number', 'LIKE', '%' . $search . '%')->get();
+        }
+        return view('application.searchStatus', [
+            'application' => $application,
+        ]);
+    }
 }

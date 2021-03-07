@@ -9,6 +9,8 @@ use App\Models\Survey;
 use App\Models\Surveyor;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 
 class SurveyController extends Controller
 {
@@ -16,23 +18,18 @@ class SurveyController extends Controller
 
     public function index()
     {
-        $settlements = Settlement::all();
+        $surveys = Application::all();
         return view('auth.survey.index', [
-            'settlements' => $settlements
+            'surveys' => $surveys
         ]);
     }
     public function notesheet($id)
     {
-        $applications = Application::where('Application_number', $id)->first();
-        $settlements = Settlement::where('Application_no', $id)->first();
-
+        $application = Application::where('Application_number', $id)->first();
 
         $pdf = App::make('dompdf.wrapper');
         $pdf->loadView('auth.survey.notesheet', [
-            'applications' => $applications,
-            'settlements' => $settlements,
-
-
+            'application' => $application,
         ]);
         return  $pdf->stream();
     }
@@ -46,20 +43,36 @@ class SurveyController extends Controller
             'settlements' => $settlements
         ]);
     }
-    public function accept()
+    // public function accept()
+    // {
+    //     $survey = new Survey();
+
+    //     $survey->Application_no = request('ApplicationNumber');
+    //     $survey->comments = request('Comments');
+
+    //     $survey->save();
+
+    //     return redirect(route('survey.send'));
+    // }
+    public function accepted($id)
     {
-        $survey = new Survey();
-
-        $survey->Application_no = request('ApplicationNumber');
-        $survey->comments = request('Comments');
-
-        $survey->save();
+        $application = Application::where('Application_number', $id)->first();
+        $application->surveyAccepted = 'Accepted';
+        $application->save();
 
         return redirect(route('survey.send'));
     }
+    public function surveyForwarded($id)
+    {
+        $application = Application::where('Application_number', $id)->first();
+        $application->surveyForwarded = 'Yes';
+        $application->save();
+
+        return redirect()->back();
+    }
     public function send()
     {
-        $surveys = Survey::all();
+        $surveys = Application::all();
 
         return view('auth.survey.send', [
             'surveys' => $surveys,
@@ -75,12 +88,36 @@ class SurveyController extends Controller
     }
     public function verified()
     {
-        $surveyors = Surveyor::all();
-        $surveys = Survey::all();
+        $surveys = Application::all();
 
         return view('auth.survey.verified', [
-            'surveyors' => $surveyors,
             'surveys' => $surveys,
         ]);
+    }
+    public function comment($id)
+    {
+        $application = Application::where('Application_number', $id)->first();
+        $application->surveyComment = request('surveyComment');
+        $application->save();
+
+        $data = Application::where('Application_number', $id)->first();
+        // $applicantName = $data->Applicant_name;
+        $applicationNumber = $data->Application_number;
+        $recieverMail = 'settlement@gmail.com';
+        $msg = "I have commented on  $applicationNumber , You can take it over now";
+        // $abs = $data->Email;
+        // $recieverMail = $abs;
+
+        $data = array("body" => $msg);
+
+        Mail::send('auth.survey.mail', $data, function ($message) use ($recieverMail, $applicationNumber) {
+            $message->to($recieverMail, $applicationNumber)
+                ->subject("$applicationNumber way to go!");
+            $message->from("survey@gmail.com", 'House Pass');
+            $message->replyTo("survey@gmail.com");
+        });
+
+
+        return redirect()->back();
     }
 }

@@ -283,20 +283,29 @@
 
 </table>
 <div>
-    <form action="/kiosk/dashboard" id="formID" method="POST">
+    @if($applications->kioskAccepted != 'Accepted')
+    <form action="/kiosk/{{ $applications->Application_number }}/appStatus" id="formID" method="POST">
         @csrf
+        @method('PATCH')
 
-        <div class="col-4">
+        <!-- <div class="col-4">
             <label for="ApplicationNumber" class="form-label">Application Number</label>
             <input type="number" required value="{{ $applications->Application_number }}" class="form-control hover:bg-green-100 transition ease-out duration-500" id="ApplicationNumber" name="ApplicationNumber" readonly>
-        </div>
+        </div> -->
+
 
         <div class="mb-4">
             <input type="submit" class="btn btn-success" value="Accept">
         </div>
 
     </form>
+    @else
+    <button class="btn btn-secondary disabled mb-4">Accepted</button>
+    @endif
 </div>
+
+@if($applications->kioskAccepted != 'Accepted')
+
 
 <nav class="flex justify-items-start mb-4">
     <form action="/kiosk/reject/{{ $applications->Application_number }}" method="POST">
@@ -305,9 +314,10 @@
         <input type="submit" class="btn btn-danger" value="Reject">
     </form>
 </nav>
+@endif
 
 <div class="mb-4">
-    <a href="/kiosk/send" class="btn btn-secondary">Check All Accepted Forms</a>
+    <a href="/kiosk/send" class="btn btn-primary">Check All Accepted Forms</a>
 </div>
 
 

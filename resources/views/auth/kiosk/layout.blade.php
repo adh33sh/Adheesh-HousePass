@@ -67,10 +67,16 @@
 
                     <div class="bg-gray-200 h-40 w-full mb-5 border-black border-2 rounded-2xl">
                         <div class=" p-2 text-center ">
-                            <div class="mt-5">
-                                <a href="/application" type="button" class="btn btn-primary">All forms</a>
+                            <nav class="text-center">
 
-                            </div>
+                                <div class="">
+                                    <a href="/kiosk/send" class="btn btn-success w-full block mb-1">Check All Accepted Forms</a>
+                                </div>
+                                <div class="">
+                                    <a href="/kiosk/uploaded" class="btn btn-primary  w-full block mb-1">Uploaded Forms By Settlement Officer</a>
+                                </div>
+
+                            </nav>
                         </div>
                     </div>
                     <div class="bg-gray-200 h-40 w-full mb-5 border-black border-2 rounded-2xl">
@@ -82,7 +88,7 @@
                                 <div class="mb-3">
                                     <form action="/logout" method="POST">
                                         @csrf
-                                        <button type="submit" class="btn btn-primary">Logout</button>
+                                        <button type="submit" class="btn btn-danger">Logout</button>
                                     </form>
 
                                 </div>

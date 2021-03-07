@@ -1,7 +1,7 @@
-@extends('auth.clerk.layout')
+@extends('auth.settlement.layout')
 @section('content')
 
-<div class="bg-gray-200 h-96 w-full overflow-hidden mb-4 border-black border-2 rounded-2xl ">
+<div class="bg-gray-200 auto w-full overflow-hidden mb-4 border-black border-2 rounded-2xl ">
     <p class="bg-green-300 text-center font-bold">RECIEPTS TO BE SENT TO SETTLEMENT OFFICER FOR SIGNATURE</p>
 
     <table class="table table-bordered table-dark table-hover table-sm  ">
@@ -11,7 +11,7 @@
                 <th scope="col">#</th>
                 <th scope="col">Application_number</th>
                 <th scope="col">Reciept</th>
-                <th scope="col">SEND</th>
+                <th scope="col">SIGN</th>
 
 
 
@@ -21,22 +21,22 @@
             </tr>
         </thead>
         <tbody>
-            @foreach($clerks as $x => $clerk)
-            @if($clerk->settlementfinalSend == 'Done')
-            @if($clerk->clerkSent != 'Yes')
+            @foreach($settlements as $x => $settlement)
+            @if($settlement->clerkSent == 'Yes')
+            @if($settlement->settlementSigned != 'Signed')
 
 
 
             <tr>
 
                 <td>{{ $x+1 }}</td>
-                <td>{{ $clerk->Application_number }}</td>
-                <td><a href="/clerk/reciept/{{ $clerk->Application_number }}">Generate {{ $clerk->Application_number }}'s Reciept</a></td>
+                <td>{{ $settlement->Application_number }}</td>
+                <td><a href="/settlement/reciept/{{ $settlement->Application_number }}">Generate {{ $settlement->Application_number }}'s Reciept</a></td>
                 <td>
-                    <form action="/clerk/{{ $clerk->Application_number }}/clerkSent" method="POST">
+                    <form action="/settlement/{{ $settlement->Application_number }}/settlementSigned" method="POST">
                         @csrf
                         @method('PATCH')
-                        <input type="submit" class="btn btn-success" value="SEND">
+                        <input type="submit" class="btn btn-success" value="SIGN">
                     </form>
 
                 </td>
@@ -52,7 +52,9 @@
     </table>
 
 
-
+    <div class="mb-4">
+        <a href="/settlement/dashboard" class="btn btn-primary">GO BACK</a>
+    </div>
 
 
 

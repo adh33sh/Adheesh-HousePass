@@ -13,13 +13,17 @@
     <h1 style="text-align:center">NoteSheet</h1>
 
 
-    <p>Application Number: {{$applications->Application_number}}</p><br>
+    <p>Application Number: {{$application->Application_number}}</p><br>
 
-    <p>Applicant Name: {{$applications->Applicant_name}}</p><br>
-    <P>Application Name: {{$applications->Application_name}}</p><br>
-    <P>Target Date: {{$settlements->Target_date}}</p><br>
-    <p>DDFD: {{$settlements->DDFD}} </p><br>
-    <p>Settlement Officer's Remarks: {{$settlements->Remarks}} </p><br>
+    <p>Applicant Name: {{$application->Applicant_name}}</p><br>
+    <P>Application Name: {{$application->Application_name}}</p><br>
+    <P>Target Date: {{$application->Target_date}}</p><br>
+    <p>DDFD: {{$application->DDFD}} </p><br>
+    <p>Survey Officer's acceptance: {{$application->surveyAccepted ?? 'Not Accepted Yet'}} </p><br>
+    @if($application->surveyorVerified != '')
+    <p>Surveyor verification: {{$application->surveyorVerified ?? 'Not Verified Yet'}} </p><br>
+    @endif
+
 
 
 

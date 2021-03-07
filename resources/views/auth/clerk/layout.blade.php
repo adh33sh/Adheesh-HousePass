@@ -46,47 +46,13 @@
             <div class="md:grid grid-cols-3 gap-2">
                 <div class="col-span-1 mb-5">
 
-                    <div class="p-4 bg-gray-200 border-black border-2 rounded-2xl mb-5">
-                        <div class="bg-white h-40 w-full flex justify-center rounded-2xl shadow-2xl p-2 ">
 
-                            <form action="{{ url('/settlement/searchform') }}" type="GET">
 
-                                <div class="py-2 flex justify-center">
-                                    <label for="inputApplicationNumber" class="form-label">Application Number</label>
-                                    <input type="number" required class="form-control hover:bg-green-100 transition ease-out duration-500" id="Application_number" name="Application_number">
-                                </div>
-                                <div class="col-12 flex justify-center">
-                                    <button type="submit" class="btn btn-primary">Find</button>
-                                </div>
-
-                            </form>
-
-                        </div>
-
-                    </div>
-
-                    <div class="bg-gray-200 h-auto w-full mb-5 border-black border-2 rounded-2xl">
+                    <!-- <div class="bg-gray-200 h-40 w-full mb-5 border-black border-2 rounded-2xl">
                         <div class=" p-2 text-center ">
-                            <div>
-                                <div>
-                                    <a href="/settlement/send" class="btn btn-dark w-full block mb-1">Check My Accepted Forms</a>
-                                </div>
-                                <div>
-                                    <a href="/settlement/check" class="btn btn-secondary w-full block mb-1">Check Survey Officer's Comments For the Accepted Forms</a>
-                                </div>
-                                <div>
-                                    <a href="/settlement/verified" class="btn btn-success w-full block mb-1">Check My Final Approval</a>
-                                </div>
-                                <a href="/settlement/final" class="btn btn-warning w-full block mb-1">Sign Reciepts</a>
-                                <div>
-                                </div>
-                                <div>
-                                    <a href="/settlement/upload" class="btn btn-primary w-full block mb-1">Check My Signed Forms</a>
-                                </div>
 
-                            </div>
                         </div>
-                    </div>
+                    </div> -->
                     <div class="bg-gray-200 h-40 w-full mb-5 border-black border-2 rounded-2xl">
 
                         <nav>

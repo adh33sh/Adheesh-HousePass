@@ -1,7 +1,9 @@
-@extends('auth.survey.layout')
+@extends('auth.surveyor.layout')
 @section('content')
 
-<div class="bg-gray-200 auto w-full overflow-hidden mb-4 border-black border-2 rounded-2xl ">
+<div class="bg-gray-200 h-96 w-full overflow-hidden mb-4 border-black border-2 rounded-2xl ">
+    <p class="bg-green-300 text-center font-bold ">NOTESHEETS SENT BY THE SURVEY OFFICER</p>
+
     <table class="table table-bordered table-dark table-hover table-sm  ">
 
         <thead class="bg-yellow-50 text-black">
@@ -12,40 +14,40 @@
 
                 <th scope="col">Accepted NoteSheet</th>
                 <!-- <th scope="col">Generate_Notesheet</th> -->
-                <th scope="col">Delete</th>
+                <th scope="col">Verify</th>
 
             </tr>
         </thead>
         <tbody>
-            @foreach($surveys as $survey)
-
+            @foreach($surveyors as $x => $surveyor)
+            @if($surveyor->surveyForwarded == 'Yes')
+            @if($surveyor->surveyorVerified != 'Verified')
             <tr>
 
-                <td></td>
-                <td><a href="/surveyor/form/{{ $survey->Application_no }}">{{ $survey->Application_no }}</a></td>
+                <td>{{ $x+1 }}</td>
+                <td>{{ $surveyor->Application_number }}</td>
 
-                <td><a href="/surveyor/notesheet/{{ $survey->Application_no }}">Generate {{ $survey->Application_no }}'s Notesheet</a></td>
+                <td><a href="/surveyor/notesheet/{{ $surveyor->Application_number }}">Generate {{ $surveyor->Application_number }}'s Notesheet</a></td>
 
 
-                <form action="/survey/delete/{{ $survey->Application_no }}" method="POST">
+                <form action="/surveyor/verified/{{ $surveyor->Application_number }}" method="POST">
                     @csrf
-                    @method('DELETE')
-                    <td><input type="submit" class="btn btn-danger" value="Delete"></td>
+                    @method('PATCH')
+                    <td><input type="submit" class="btn btn-success" value="Verify"></td>
                 </form>
 
+
+
             </tr>
+            @endif
+            @endif
             @endforeach
 
         </tbody>
     </table>
 
 
-    <div class="mb-4">
-        <a href="/kiosk/dashboard" class="btn btn-primary">GO BACK</a>
-    </div>
-    <div class="mb-4">
-        <a href="/surveyor/send" class="btn btn-success">Check All Verified Forms</a>
-    </div>
+
 
 
 

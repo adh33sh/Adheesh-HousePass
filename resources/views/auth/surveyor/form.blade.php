@@ -1,4 +1,4 @@
-@extends('auth.survey.layout')
+@extends('auth.surveyor.layout')
 @section('content')
 
 
@@ -287,7 +287,7 @@
     </div>
     <div class="col-md-6">
         <label for="Verified" class="form-label">Verified</label>
-        <input type="text" required class="form-control hover:bg-green-100 transition ease-out duration-500" id="Verified" name="Verified" placeholder="Yes">
+        <input type="text" required class="form-control hover:bg-green-100 transition ease-out duration-500" id="Verified" name="Verified">
     </div>
 
     <td><input type="submit" class="btn btn-success" value="Accept"></td>
