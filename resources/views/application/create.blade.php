@@ -6,11 +6,11 @@
         <div class="bg-gray-200 rounded-t-2xl p-4 border-2 border-black hover:shadow-inner  ">
             <legend>Personal Information</legend>
             <div class="col-md-6">
-                <label for="inputApplicationName" class="form-label">Application name</label>
+                <label for="inputApplicationName" class="form-label">Application name </label> <span class="text-red-600">*</span>
                 <input type="text" class="form-control hover:bg-green-100 transition ease-out duration-500" id="inputApplicationName" name="inputApplicationName" required>
             </div>
             <div class="col-md-6">
-                <label for="inputApplicantName" class="form-label">Applicant name</label>
+                <label for="inputApplicantName" class="form-label">Applicant name </label> <span class="text-red-600">*</span>
                 <input type="text" required class="form-control hover:bg-green-100 transition ease-out duration-500" id="inputApplicantName" name="inputApplicantName">
             </div>
             <div class="col-md-4">
@@ -28,22 +28,22 @@
                 </select>
             </div>
             <div class="col-md-6">
-                <label for="inputDOB" class="form-label">Date of Birth</label>
+                <label for="inputDOB" class="form-label">Date of Birth </label> <span class="text-red-600">*</span>
                 <input type="date" required class="form-control hover:bg-green-100 transition ease-out duration-500" id="inputDOB" name="inputDOB">
             </div>
             <div class="col-md-4">
-                <label for="inputCTBU" class="form-label">Certificate to be uploaded</label>
+                <label for="inputCTBU" class="form-label">Certificate to be uploaded </label>
                 <select id="inputCTBU" required name="inputCTBU" class="form-control hover:bg-green-100 transition ease-out duration-500">
                     <option selected>Choose...</option>
                     <option>...</option>
                 </select>
                 <div class="custom-file">
-                    <label class="form-label" for="validatedCustomFile">Choose File</label>
+                    <label class="form-label" for="validatedCustomFile">Choose File </label> <span class="text-red-600">*</span>
                     <input type="file" required class="form-control-file" id="file1" name="file1">
                 </div>
             </div>
             <div class="col-md-4">
-                <label for="inputGender" class="form-label">Gender</label>
+                <label for="inputGender" class="form-label">Gender </label> <span class="text-red-600">*</span>
                 <select id="inputGender" required name="inputGender" class="form-control hover:bg-green-100 transition ease-out duration-500">
                     <option selected>Choose...</option>
                     <option>...</option>
@@ -51,43 +51,43 @@
             </div>
 
             <div class="col-md-6">
-                <label for="inputEmail4" class="form-label">Email</label>
+                <label for="inputEmail4" class="form-label">Email </label> <span class="text-red-600">*</span>
                 <input type="email" class="form-control hover:bg-green-100 transition ease-out duration-500" id="inputEmail4" name="inputEmail4">
             </div>
             <div class="col-md-6">
-                <label for="inputContactNo" class="form-label">Contact no</label>
+                <label for="inputContactNo" class="form-label">Contact no </label> <span class="text-red-600">*</span>
                 <input type="tel" required class="form-control hover:bg-green-100 transition ease-out duration-500" id="inputContactNo" name="inputContactNo">
             </div>
             <div class="col-md-4">
-                <label for="inputEducation" class="form-label">Education</label>
+                <label for="inputEducation" class="form-label">Education </label><span class="text-red-600">*</span>
                 <select id="inputEducation" required name="inputEducation" class="form-control hover:bg-green-100 transition ease-out duration-500">
                     <option selected>Choose...</option>
                     <option>...</option>
                 </select>
             </div>
             <div class="col-md-4">
-                <label for="inputReligion" class="form-label">Religion</label>
+                <label for="inputReligion" class="form-label">Religion </label><span class="text-red-600">*</span>
                 <select id="inputReligion" required name="inputReligion" class="form-control hover:bg-green-100 transition ease-out duration-500">
                     <option selected>Choose...</option>
                     <option>...</option>
                 </select>
             </div>
             <div class="col-md-4">
-                <label for="inputOccupation" class="form-label">Occupation</label>
+                <label for="inputOccupation" class="form-label">Occupation </label><span class="text-red-600">*</span>
                 <select id="inputOccupation" required name="inputOccupation" class="form-control hover:bg-green-100 transition ease-out duration-500">
                     <option selected>Choose...</option>
                     <option>...</option>
                 </select>
             </div>
             <div class="col-md-4">
-                <label for="inputRelationshipType" class="form-label">Relationship Type</label>
+                <label for="inputRelationshipType" class="form-label">Relationship Type </label><span class="text-red-600">*</span>
                 <select id="inputRelationshipType" required name="inputRelationshipType" class="form-control hover:bg-green-100 transition ease-out duration-500">
                     <option selected>Choose...</option>
                     <option>...</option>
                 </select>
             </div>
             <div class="col-12">
-                <label for="inputRelationName" class="form-label">Enter name</label>
+                <label for="inputRelationName" class="form-label">Enter name </label><span class="text-red-600">*</span>
                 <input type="text" required class="form-control hover:bg-green-100 transition ease-out duration-500" id="inputRelationName" name="inputRelationName">
             </div>
             <div class="col-md-6">
@@ -101,20 +101,20 @@
         <div class="mt-5 bg-gray-200  p-4 border-2 border-black hover:shadow-inner ">
             <legend>Permanent Address</legend>
             <div class="col-12">
-                <label for="inputPADNo" class="form-label">Permanent Address - Door no</label>
-                <input type="text" required class="form-control hover:bg-green-100 transition ease-out duration-500" id="inputPADNo" name="inputPADNo" placeholder="1234 Main St">
+                <label for="inputPADNo" class="form-label">Permanent Address - Door no </label><span class="text-red-600">*</span>
+                <input type="text" required class="form-control hover:bg-green-100 transition ease-out duration-500" id="inputPADNo" name="inputPADNo">
             </div>
             <div class="col-12">
-                <label for="inputPASublocality1" class="form-label">Permanent Address - Sub Locality 1</label>
-                <input type="text" required class="form-control hover:bg-green-100 transition ease-out duration-500" id="inputPASublocality1" name="inputPASublocality1" placeholder="1234 Main St">
+                <label for="inputPASublocality1" class="form-label">Permanent Address - Sub Locality 1 </label><span class="text-red-600">*</span>
+                <input type="text" required class="form-control hover:bg-green-100 transition ease-out duration-500" id="inputPASublocality1" name="inputPASublocality1">
             </div>
             <div class="col-12">
                 <label for="inputPASublocality2" class="form-label">Permanent Address - Sub Locality 2</label>
-                <input type="text" class="form-control hover:bg-green-100 transition ease-out duration-500" id="inputPASublocality2" name="inputPASublocality2" placeholder="1234 Main St">
+                <input type="text" class="form-control hover:bg-green-100 transition ease-out duration-500" id="inputPASublocality2" name="inputPASublocality2">
             </div>
             <div class="col-12">
                 <label for="inputPALocation" class="form-label">Permanent Address - Location</label>
-                <input type="text" class="form-control hover:bg-green-100 transition ease-out duration-500" id="inputPALocation" name="inputPALocation" placeholder="1234 Main St">
+                <input type="text" class="form-control hover:bg-green-100 transition ease-out duration-500" id="inputPALocation" name="inputPALocation">
             </div>
 
             <div class="col-md-6">
@@ -136,25 +136,25 @@
                 </select>
             </div>
             <div class="col-4">
-                <label for="inputPinCode" class="form-label">Pin Code</label>
+                <label for="inputPinCode" class="form-label">Pin Code </label><span class="text-red-600">*</span>
                 <input type="text" required class="form-control hover:bg-green-100 transition ease-out duration-500" id="inputPinCode" name="inputPinCode">
             </div>
             <div class="col-md-4">
-                <label for="inputPACountry" class="form-label">Permanent Address - Country</label>
+                <label for="inputPACountry" class="form-label">Permanent Address - Country </label>
                 <select id="inputPACountry" name="inputPACountry" class="form-control hover:bg-green-100 transition ease-out duration-500">
                     <option selected>Choose...</option>
                     <option>...</option>
                 </select>
             </div>
-            <div class="col-md-4">
-                <label for="inputPAPS" class="form-label">Permanent Address - Police Station</label>
+            <div class="col-md-6">
+                <label for="inputPAPS" class="form-label">Permanent Address - PoliceStation</label><span class="text-red-600">*</span>
                 <select id="inputPAPS" required name="inputPAPS" class="form-control hover:bg-green-100 transition ease-out duration-500">
                     <option selected>Choose...</option>
                     <option>...</option>
                 </select>
             </div>
             <div class="col-md-4">
-                <label for="inputPAPO" class="form-label">Permanent Address - Post Office</label>
+                <label for="inputPAPO" class="form-label">Permanent Address - Post Office</label><span class="text-red-600">*</span>
                 <select id="inputPAPO" required name="inputPAPO" class="form-control hover:bg-green-100 transition ease-out duration-500">
                     <option selected>Choose...</option>
                     <option>...</option>
@@ -169,20 +169,20 @@
         <div class="mt-5 bg-gray-200  p-4 border-2 border-black hover:shadow-inner ">
             <legend>Present Address</legend>
             <div class="col-12">
-                <label for="inputPADNo1" class="form-label">Present Address - Door no</label>
-                <input type="text" required class="form-control hover:bg-green-100 transition ease-out duration-500" id="inputPADNoPre" name="inputPADNoPre" placeholder="1234 Main St">
+                <label for="inputPADNo1" class="form-label">Present Address - Door no </label><span class="text-red-600">*</span>
+                <input type="text" required class="form-control hover:bg-green-100 transition ease-out duration-500" id="inputPADNoPre" name="inputPADNoPre">
             </div>
             <div class="col-12">
-                <label for="inputPASublocality1" class="form-label">Present Address - Sub Locality 1</label>
-                <input type="text" required class="form-control hover:bg-green-100 transition ease-out duration-500" id="inputPASublocality1Pre" name="inputPASublocality1Pre" placeholder="1234 Main St">
+                <label for="inputPASublocality1" class="form-label">Present Address - Sub Locality 1 </label><span class="text-red-600">*</span>
+                <input type="text" required class="form-control hover:bg-green-100 transition ease-out duration-500" id="inputPASublocality1Pre" name="inputPASublocality1Pre">
             </div>
             <div class="col-12">
                 <label for="inputPASublocality2" class="form-label">Present Address - Sub Locality 2</label>
-                <input type="text" class="form-control hover:bg-green-100 transition ease-out duration-500" id="inputPASublocality2Pre" name="inputPASublocality2Pre" placeholder="1234 Main St">
+                <input type="text" class="form-control hover:bg-green-100 transition ease-out duration-500" id="inputPASublocality2Pre" name="inputPASublocality2Pre">
             </div>
             <div class="col-12">
                 <label for="inputPALocation" class="form-label">Present Address - Location</label>
-                <input type="text" class="form-control hover:bg-green-100 transition ease-out duration-500" id="inputPALocationPre" name="inputPALocationPre" placeholder="1234 Main St">
+                <input type="text" class="form-control hover:bg-green-100 transition ease-out duration-500" id="inputPALocationPre" name="inputPALocationPre">
             </div>
 
             <div class="col-md-6">
@@ -204,7 +204,7 @@
                 </select>
             </div>
             <div class="col-4">
-                <label for="inputPinCode1" class="form-label">Pin Code</label>
+                <label for="inputPinCode1" class="form-label">Pin Code</label> <span class="text-red-600">*</span>
                 <input type="text" required class="form-control hover:bg-green-100 transition ease-out duration-500" id="inputPinCodePre" name="inputPinCodePre">
             </div>
             <div class="col-md-4">
@@ -215,14 +215,14 @@
                 </select>
             </div>
             <div class="col-md-4">
-                <label for="inputPAPS1" class="form-label">Present Address - Police Station</label>
+                <label for="inputPAPS1" class="form-label">Present Address - Police Station </label><span class="text-red-600">*</span>
                 <select id="inputPAPSPre" required name="inputPAPSPre" class="form-control hover:bg-green-100 transition ease-out duration-500">
                     <option selected>Choose...</option>
                     <option>...</option>
                 </select>
             </div>
             <div class="col-md-4">
-                <label for="inputPAPO1" class="form-label">Present Address - Post Office</label>
+                <label for="inputPAPO1" class="form-label">Present Address - Post Office </label><span class="text-red-600">*</span>
                 <select id="inputPAPOPre" required name="inputPAPOPre" class="form-control hover:bg-green-100 transition ease-out duration-500">
                     <option selected>Choose...</option>
                     <option>...</option>
@@ -247,7 +247,7 @@
                 <option>...</option>
             </select>
             <div class="custom-file">
-                <label class="form-label" for="validatedCustomFile">Choose File</label>
+                <label class="form-label" for="validatedCustomFile">Choose File </label><span class="text-red-600">*</span>
                 <input type="file" required class="form-control-file" id="attachments" name="attachments" multiple="">
             </div>
         </div>

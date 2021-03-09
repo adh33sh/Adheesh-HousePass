@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Welcome PUBLIC!</title>
+    <title>HOUSE PASS</title>
     <link rel="stylesheet" href="{{ asset('css/twapp.css') }}">
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
 </head>
@@ -107,7 +107,18 @@
                             Introduction
                         </h1>
                         <p class="p-2">
-                            Mizoram State e-Governance Society (MSEGS) was established in 2005 and is registered under the Society Registration Act, XXI of 1860. The primary objective of the Society is to administer the implementation of e-Governance projects for the overall benefit of the citizens and public by setting up the necessary administrative, financial, legal and technical framework, implementation mechanism and resources in the State of Mizoram.
+                            <u><b>Step 1 </b></u>: Your application will be forwarded to the Kiosk Operator once you have submitted your form.<br>
+                            <u><b>Step 2 </b></u>: The Kiosk Operator will then Forward it to the Settlement Officer or Reject your application.<br>
+                            <u><b>Step 3 </b></u>: The Settlement Officer will check your form/documents and based on that he will accept or reject your application.<br>
+                            <u><b>Step 4 </b></u>: If the Settlement Officer accepts the application the Survey Officer will check the notesheet and forward it to the Surveyor for physical verification.<br>
+                            <u><b>Step 5 </b></u>: The Surveyor will then verify the notesheet and send it back to the Survey Officer for his/her comments on the report.<br>
+                            <u><b>Step 6 </b></u>: The Survey will give his comment on the report and send it to the Settlement Officer for the final approval. <br>
+                            <u><b>Step 7 </b></u>: The Settlement Officer will then approve or reject your application. <br>
+                            <u><b>Step 8 </b></u>: The approved application will be sent to the Section Clerk.<br>
+                            <u><b>Step 9 </b></u>: The Section Clerk will generate the reciept and send it back to the Settlement Officer for his/her Signature.<br>
+                            <u><b>Step 10 </b></u>: The Settlement Officer will sign the application and uploads/send it to the Kiosk Operator.<br>
+                            <u><b>Step 11 </b></u>: The Kiosk Operator will then take the print out of your reciept, signs and stamps it with a seal and hand over the application to you.<br>
+
                         </p>
 
                     </div>

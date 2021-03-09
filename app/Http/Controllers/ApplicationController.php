@@ -124,7 +124,7 @@ class ApplicationController extends Controller
         //     $applications->file1 = $filename;
         // }
 
-        $applications->Application_number = randomNumber(9);
+        $applications->Application_number =  randomNumber(7);
         $applications->Application_name = request('inputApplicationName');
         $applications->Applicant_name = request('inputApplicantName');
         $applications->DOB = request('inputDOB');
@@ -177,10 +177,9 @@ class ApplicationController extends Controller
 
 
 
-
         $applications->save();
 
-        return redirect('/kiosk/dashboard')->with('mssg', 'Welcome Kiosk Operator!')->withInput();
+        return redirect('/login')->with('mssg', 'YOUR APPLICATION HAS BEEN SUCCESSFULLY SUBMITTED! You can now go back');
     }
 
     public function show($Application_number)
